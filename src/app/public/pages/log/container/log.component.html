@@ -17,7 +17,7 @@
             <label class="form-label" for="correo_electronico">Correo Eletrónico</label>
           </div>
 
-          <div class="alert alert-danger" role="alert"
+          <div class="alert alert-warning" role="alert"
             *ngIf="FormLogin.get('email')?.touched && FormLogin.get('email')?.errors?.['required']">
             Campo Correo Electrónico Requerido.
           </div>
@@ -31,7 +31,7 @@
             <label class="form-label" for="contraseña">Contraseña</label>
           </div>
 
-          <div class="alert alert-danger" role="alert"
+          <div class="alert alert-warning" role="alert"
             *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['required']">
             Campo Contraseña Requerido.
           </div>
