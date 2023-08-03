@@ -2,7 +2,7 @@
   <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-center h-100">
       <div class="col-md-8 col-lg-7 col-xl-6">
-        <div style="width: 300px; height: 300px;">
+        <div style="width: 400px; height: 400px;">
           <ng-lottie [options]="animationOptions"></ng-lottie>
         </div>
 
@@ -19,7 +19,7 @@
 
           <div class="alert alert-warning" role="alert"
             *ngIf="FormLogin.get('email')?.touched && FormLogin.get('email')?.errors?.['required']">
-            Campo Correo Electrónico Requerido.
+             Correo Electrónico Requerido.
           </div>
           <div class="alert alert-danger" role="alert" *ngIf="emailvalid">
             Correo Electrónico Incorrecto
@@ -33,7 +33,7 @@
 
           <div class="alert alert-warning" role="alert"
             *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['required']">
-            Campo Contraseña Requerido.
+            Contraseña Requerido.
           </div>
 
           <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->

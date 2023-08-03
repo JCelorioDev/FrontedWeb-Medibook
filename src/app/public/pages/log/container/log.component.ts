@@ -21,7 +21,7 @@ constructor(private router: Router,private authService: AuthService) {
   changetype:boolean = true;
   
   animationOptions: AnimationOptions = {
-    path: '/assets/animation/adminlogin.json',
+    path: '/assets/animation/adminlogin2.json',
   };
 
   FormLogin = new FormGroup({
