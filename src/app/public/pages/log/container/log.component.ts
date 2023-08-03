@@ -14,7 +14,12 @@ import { AuthService } from 'src/app/core/shared/services/auth.service';
 export class LogComponent {
 constructor(private router: Router,private authService: AuthService) {
 
+
   }
+
+  visible:boolean = true;
+  changetype:boolean = true;
+  
   animationOptions: AnimationOptions = {
     path: '/assets/animation/adminlogin.json',
   };
@@ -47,5 +52,8 @@ constructor(private router: Router,private authService: AuthService) {
 
   }
 
-
+  viewpass(){
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
 }

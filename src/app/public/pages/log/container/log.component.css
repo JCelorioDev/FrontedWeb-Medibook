@@ -24,3 +24,12 @@ background: #eee;
     border-color: #95A5A6;
     box-shadow: 0 0 0 1rem rgba(255, 193, 7, 0.25); 
 }
+
+.eyeicon{
+    position: relative;
+    top: -45px;
+    left: 415px;
+    font-size: 25px;
+    color: #95A5A6;
+    cursor: pointer;
+}
