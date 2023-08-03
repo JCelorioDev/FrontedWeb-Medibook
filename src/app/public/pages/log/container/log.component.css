@@ -14,11 +14,24 @@ background: #eee;
 .btn{
     background-color: #F39C12;
     border: #F39C12 solid 2px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
 .form-control:focus {
     border-color: #2ECC71;
     box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25); 
+}
+
+.form-control{
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
 .form-check-input:focus{
@@ -29,6 +42,7 @@ background: #eee;
 .form-label{
     font-family: 'Saira Extra Condensed', sans-serif;
     font-size: 25px;
+    font-weight: 500;
 }
 
 .eyeicon{

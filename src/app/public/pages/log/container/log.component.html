@@ -14,7 +14,7 @@
 
           <!-- Correo Eletrónico input -->
           <div class="form-outline mb-4">
-            <input formControlName="email" type="email" id="correo_electronico" class="form-control form-control-lg" />
+            <input placeholder="Ingrese su Correo Electrónico" formControlName="email" type="email" id="correo_electronico" class="form-control form-control-lg" />
             <label class="form-label" for="correo_electronico">Correo Electrónico</label>
           </div>
 
@@ -27,7 +27,7 @@
           </div>
           <!-- Contraseña input -->
           <div class="form-outline mb-4">
-            <input [type]="changetype?'password':'text'"   formControlName="password" type="password" id="contraseña" class="form-control form-control-lg" />
+            <input placeholder="Ingrese su Contraseña" [type]="changetype?'password':'text'"   formControlName="password" type="password" id="contraseña" class="form-control form-control-lg" />
             <span (click)="viewpass()"  class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' " ></i></span>
             <label class="form-label password" for="contraseña">Contraseña</label>
           </div>
