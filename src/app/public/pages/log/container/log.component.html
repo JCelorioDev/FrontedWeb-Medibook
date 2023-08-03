@@ -14,7 +14,7 @@
           <!-- Correo Eletrónico input -->
           <div class="form-outline mb-4">
             <input formControlName="email" type="email" id="correo_electronico" class="form-control form-control-lg" />
-            <label class="form-label" for="correo_electronico">Correo Eletrónico</label>
+            <label class="form-label" for="correo_electronico">Correo Electrónico</label>
           </div>
 
           <div class="alert alert-warning" role="alert"
@@ -35,6 +35,19 @@
             *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['required']">
             Campo Contraseña Requerido.
           </div>
+
+          <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
+          <div class="alert alert-info" role="alert"
+          *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['minlength']">
+          Nesecitas 5 Caracteres como Mínimo.
+          </div>
+          <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
+
+          <div class="alert alert-info" role="alert"
+          *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['maxlength']">
+          10 Caracteres como Máximo.
+          </div>
+
           <div class="alert alert-danger" role="alert" *ngIf="passwordvalid">
             Contraseña Incorrecta
           </div>

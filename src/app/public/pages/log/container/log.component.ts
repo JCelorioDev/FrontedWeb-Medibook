@@ -26,7 +26,7 @@ constructor(private router: Router,private authService: AuthService) {
 
   FormLogin = new FormGroup({
     email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(10)])
   });
   emailvalid : boolean = false;
   passwordvalid : boolean = false;
