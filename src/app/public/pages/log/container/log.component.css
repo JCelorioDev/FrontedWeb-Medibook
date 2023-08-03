@@ -38,3 +38,10 @@ background: #eee;
     position: relative;
     left: -20px;
 }
+
+.admin_text{
+    font-size: 35px;
+    position: relative;
+    left: 180px;
+    font-family: 'Boogaloo', cursive;
+}
