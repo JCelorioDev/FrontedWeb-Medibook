@@ -1,0 +1,26 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+
+.form-check{
+    position: relative;
+    left: -145px;
+}
+
+.btn{
+    background-color: #3498D8;
+}
+
+.form-control:focus {
+    border-color: #2ECC71;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25); 
+}
+
+.form-check-input:focus{
+    border-color: #95A5A6;
+    box-shadow: 0 0 0 1rem rgba(255, 193, 7, 0.25); 
+}
