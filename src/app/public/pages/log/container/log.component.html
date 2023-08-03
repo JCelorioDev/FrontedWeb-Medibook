@@ -1,1 +1,49 @@
-<p>Estoy en el Login Flaco! </p>
+<section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          class="img-fluid" alt="Phone image">
+          <!-- <ng-lottie [options]="options"></ng-lottie> -->
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <form [formGroup]="FormLogin">
+
+            <!-- Correo Eletrónico input -->
+            <div class="form-outline mb-4">
+              <input formControlName="email" type="email" id="correo_electronico" class="form-control form-control-lg" />
+              <label class="form-label" for="correo_electronico">Correo Eletrónico</label>
+            </div>
+
+            <div class="alert alert-danger" role="alert"
+            *ngIf="FormLogin.get('email')?.touched && FormLogin.get('email')?.errors?.['required']">
+            Campo Correo Electrónico Requerido.
+            </div>
+  
+            <!-- Contraseña input -->
+            <div class="form-outline mb-4">
+              <input formControlName="password" type="password" id="contraseña" class="form-control form-control-lg" />
+              <label class="form-label" for="contraseña">Contraseña</label>
+            </div>
+
+            <div class="alert alert-danger" role="alert"
+            *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['required']">
+            Campo Contraseña Requerido.
+            </div>
+  
+            <div class="d-flex justify-content-around align-items-center mb-4">
+              <!-- Checkbox -->
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                <label class="form-check-label" for="form1Example3"> Mostrar Contraseña </label>
+              </div>
+            </div>
+  
+            <!-- Botón de Ingresar  -->
+            <button (click)="Login()" type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
