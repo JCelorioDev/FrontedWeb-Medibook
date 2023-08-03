@@ -12,7 +12,8 @@ background: #eee;
 }
 
 .btn{
-    background-color: #3498D8;
+    background-color: #F39C12;
+    border: #F39C12 solid 2px;
 }
 
 .form-control:focus {
@@ -23,6 +24,11 @@ background: #eee;
 .form-check-input:focus{
     border-color: #95A5A6;
     box-shadow: 0 0 0 1rem rgba(255, 193, 7, 0.25); 
+}
+
+.form-label{
+    font-family: 'Saira Extra Condensed', sans-serif;
+    font-size: 25px;
 }
 
 .eyeicon{
@@ -44,4 +50,8 @@ background: #eee;
     position: relative;
     left: 180px;
     font-family: 'Boogaloo', cursive;
+}
+
+.alert{
+    margin-top: -30px;
 }
