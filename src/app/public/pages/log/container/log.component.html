@@ -28,7 +28,7 @@
           <div class="form-outline mb-4">
             <input [type]="changetype?'password':'text'"   formControlName="password" type="password" id="contraseña" class="form-control form-control-lg" />
             <span (click)="viewpass()"  class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' " ></i></span>
-            <label class="form-label" for="contraseña">Contraseña</label>
+            <label class="form-label password" for="contraseña">Contraseña</label>
           </div>
 
           <div class="alert alert-warning" role="alert"
