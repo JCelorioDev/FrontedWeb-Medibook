@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./private/private.module').then(m => m.PrivateModule),
-canActivate:[AuthGuard]
+
   },
   {
     path: '**',

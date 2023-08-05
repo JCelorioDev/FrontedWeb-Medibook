@@ -19,7 +19,7 @@ constructor(private router: Router,private authService: AuthService) {
 
   visible:boolean = true;
   changetype:boolean = true;
-  
+
   animationOptions: AnimationOptions = {
     path: '/assets/animation/loginadmin3.json',
   };
@@ -36,6 +36,7 @@ constructor(private router: Router,private authService: AuthService) {
     if (this.authService.EmailLogin(this.FormLogin.get('email')?.value) && this.authService.PasswordLogin(this.FormLogin.get('password')?.value) ) {
       console.log(this.FormLogin.value);
     this.router.navigate(['/home']);
+    window.location.href = '/home';
     } else if(this.authService.EmailLogin(this.FormLogin.get('email')?.value) == false && this.authService.PasswordLogin(this.FormLogin.get('password')?.value) == true) {
       console.log('Email es incorrecto');
       this.emailvalid = true;

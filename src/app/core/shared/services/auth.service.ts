@@ -7,14 +7,14 @@ export class AuthService {
 
   constructor() { }
   private isAuthenticated: boolean = false;
-  private AuthentiEmail:boolean = false;
-  private AuthentiPassword:boolean = false;
+  private AuthentiEmail: boolean = false;
+  private AuthentiPassword: boolean = false;
 
 
   EmailLogin(username: any): boolean {
     // Aquí implementa la lógica para autenticar al usuario (por ejemplo, mediante una llamada a un servidor)
     // Si el usuario es válido, establece isAuthenticated en true
-    if (username == 'admin') {
+    if (username == '') {
       this.AuthentiEmail = true;
     } else {
       this.AuthentiEmail = false;
@@ -25,7 +25,7 @@ export class AuthService {
   PasswordLogin(password: any): boolean {
     // Aquí implementa la lógica para autenticar al usuario (por ejemplo, mediante una llamada a un servidor)
     // Si el usuario es válido, establece isAuthenticated en true
-    if (password == 'admin') {
+    if (password == '') {
       this.AuthentiPassword = true;
     } else {
       this.AuthentiPassword = false;
@@ -40,9 +40,9 @@ export class AuthService {
   }
 
   isAuthenticatedUser(): boolean {
-    if(this.AuthentiEmail && this.AuthentiPassword){
+    if (this.AuthentiEmail && this.AuthentiPassword) {
       this.isAuthenticated = true;
-    }else{
+    } else {
       this.isAuthenticated = false;
     }
     return this.isAuthenticated;
