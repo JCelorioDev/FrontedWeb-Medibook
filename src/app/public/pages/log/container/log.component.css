@@ -1,19 +1,19 @@
 .divider:after,
 .divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
 }
 
-.form-check{
+.form-check {
     position: relative;
     left: -145px;
 }
 
-.btn{
-    background-color: #F39C12;
-    border: #F39C12 solid 2px;
+button {
+    background-color: #f39c12;
+    border: none;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -21,12 +21,20 @@ background: #eee;
     -o-border-radius: 15px;
 }
 
-.form-control:focus {
+button:hover {
+    transform: scale(1.1);
+    background-color: #12f370;
+}
+
+input:focus {
     border-color: #2ECC71;
-    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25); 
 }
 
-.form-control{
+input {
+    background-color: aliceblue;
+}
+
+.form-control {
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -34,18 +42,18 @@ background: #eee;
     -o-border-radius: 15px;
 }
 
-.form-check-input:focus{
+.form-check-input:focus {
     border-color: #95A5A6;
-    box-shadow: 0 0 0 1rem rgba(255, 193, 7, 0.25); 
+    box-shadow: 0 0 0 1rem rgba(255, 193, 7, 0.25);
 }
 
-.form-label{
+.form-label {
     font-family: 'Saira Extra Condensed', sans-serif;
     font-size: 25px;
     font-weight: 500;
 }
 
-.eyeicon{
+.eyeicon {
     position: relative;
     top: -45px;
     left: 415px;
@@ -54,18 +62,18 @@ background: #eee;
     cursor: pointer;
 }
 
-.password{
+.password {
     position: relative;
     left: -20px;
 }
 
-.admin_text{
+.admin_text {
     font-size: 35px;
     position: relative;
     left: 180px;
     font-family: 'Boogaloo', cursive;
 }
 
-.alert{
+.alert {
     margin-top: -30px;
 }

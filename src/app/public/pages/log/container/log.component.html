@@ -1,63 +1,59 @@
 <section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <div style="width: 400px; height: 400px;">
-          <ng-lottie [options]="animationOptions"></ng-lottie>
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <div style="width: 400px; height: 400px;">
+                    <ng-lottie [options]="animationOptions"></ng-lottie>
+                </div>
+
+            </div>
+
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <label for="admin" class="admin_text">Admin</label>
+                <form id="admin" [formGroup]="FormLogin">
+
+                    <!-- Correo Eletrónico input -->
+                    <div class="form-outline mb-4">
+                        <input placeholder="Ingrese su Correo Electrónico" formControlName="email" type="email" id="correo_electronico" class="form-control form-control-lg" />
+                        <label class="form-label" for="correo_electronico">Correo Electrónico</label>
+                    </div>
+
+                    <div style=" margin-bottom: 20px;" class="alert alert-warning" role="alert" *ngIf="FormLogin.get('email')?.touched && FormLogin.get('email')?.errors?.['required']">
+                        Correo Electrónico Requerido.
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="emailvalid">
+                        Correo Electrónico Incorrecto
+                    </div>
+                    <!-- Contraseña input -->
+                    <div class="form-outline mb-4">
+                        <input placeholder="Ingrese su Contraseña" [type]="changetype?'password':'text'" formControlName="password" type="password" id="contraseña" class="form-control form-control-lg" />
+                        <span (click)="viewpass()" class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' " ></i></span>
+                        <label class="form-label password" for="contraseña">Contraseña</label>
+                    </div>
+
+                    <div class="alert alert-warning" role="alert" *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['required']">
+                        Contraseña Requerido.
+                    </div>
+
+                    <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
+                    <div class="alert alert-info" role="alert" *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['minlength']">
+                        Nesecitas 5 Caracteres como Mínimo.
+                    </div>
+                    <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
+
+                    <div class="alert alert-info" role="alert" *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['maxlength']">
+                        10 Caracteres como Máximo.
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="passwordvalid">
+                        Contraseña Incorrecta
+                    </div>
+
+                    <!-- Botón de Ingresar  -->
+                    <button (click)="Login()" type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>
+
+                </form>
+            </div>
         </div>
-
-      </div>
-
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <label for="admin" class="admin_text">Admin</label>
-        <form id="admin" [formGroup]="FormLogin">
-
-          <!-- Correo Eletrónico input -->
-          <div class="form-outline mb-4">
-            <input placeholder="Ingrese su Correo Electrónico" formControlName="email" type="email" id="correo_electronico" class="form-control form-control-lg" />
-            <label class="form-label" for="correo_electronico">Correo Electrónico</label>
-          </div>
-
-          <div class="alert alert-warning" role="alert"
-            *ngIf="FormLogin.get('email')?.touched && FormLogin.get('email')?.errors?.['required']">
-             Correo Electrónico Requerido.
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="emailvalid">
-            Correo Electrónico Incorrecto
-          </div>
-          <!-- Contraseña input -->
-          <div class="form-outline mb-4">
-            <input placeholder="Ingrese su Contraseña" [type]="changetype?'password':'text'"   formControlName="password" type="password" id="contraseña" class="form-control form-control-lg" />
-            <span (click)="viewpass()"  class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' " ></i></span>
-            <label class="form-label password" for="contraseña">Contraseña</label>
-          </div>
-
-          <div class="alert alert-warning" role="alert"
-            *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['required']">
-            Contraseña Requerido.
-          </div>
-
-          <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
-          <div class="alert alert-info" role="alert"
-          *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['minlength']">
-          Nesecitas 5 Caracteres como Mínimo.
-          </div>
-          <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
-
-          <div class="alert alert-info" role="alert"
-          *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['maxlength']">
-          10 Caracteres como Máximo.
-          </div>
-
-          <div class="alert alert-danger" role="alert" *ngIf="passwordvalid">
-            Contraseña Incorrecta
-          </div>
-
-          <!-- Botón de Ingresar  -->
-          <button (click)="Login()" type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>
-
-        </form>
-      </div>
     </div>
-  </div>
 </section>
