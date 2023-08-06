@@ -4,7 +4,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LottieModule } from 'ngx-lottie';
+
 import player from 'lottie-web';
+import { HttpClientModule } from '@angular/common/http';
 export function playerFactory() {
   return player;
 }
@@ -15,7 +17,7 @@ export function playerFactory() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
 
   ],

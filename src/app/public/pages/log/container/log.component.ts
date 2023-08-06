@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AnimationOptions } from 'ngx-lottie';
@@ -11,8 +11,9 @@ import { AuthService } from 'src/app/public/Services/auth.service';
   styleUrls: ['./log.component.css'],
 
 })
-export class LogComponent {
-constructor(private readonly router: Router,private readonly authService: AuthService,private formBuilder: FormBuilder,) {}
+export class LogComponent implements OnInit{
+constructor(private readonly router: Router,private readonly authService: AuthService,
+  private formBuilder: FormBuilder,) {}
 
   visible:boolean = true;
   changetype:boolean = true;
