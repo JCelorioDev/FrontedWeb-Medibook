@@ -50,7 +50,9 @@ constructor(private readonly router: Router,private readonly authService: AuthSe
       this.authService.Login(form).subscribe((data) => {
         this.authService.setToken(data.access_token);
         this.notificacion.success("Inicio de sesión exitoso",'Proceso Exitoso');
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
+        // this.router.navigateByUrl('home');
+        window.location.href = 'home';
       });
     }
 

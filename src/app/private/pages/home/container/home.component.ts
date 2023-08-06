@@ -7,8 +7,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
 constructor(private notificacion:ToastrService,){}
 ngOnInit() {
+
 
 }
 }
