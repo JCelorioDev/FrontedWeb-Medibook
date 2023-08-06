@@ -18,38 +18,35 @@
           </div>
 
           <div class="alert alert-warning" role="alert"
-            *ngIf="FormLogin.get('email')?.touched && FormLogin.get('email')?.errors?.['required']">
+            *ngIf="FormLogin.get('email')?.hasError('required')">
              Correo Electrónico Requerido.
           </div>
-          <div class="alert alert-danger" role="alert" *ngIf="emailvalid">
-            Correo Electrónico Incorrecto
-          </div>
+          <div class="alert alert-warning" role="alert"
+          *ngIf="FormLogin.get('email')?.hasError('email')">
+           Se requiere un correo valido.
+        </div>
           <!-- Contraseña input -->
           <div class="form-outline mb-4">
             <input placeholder="Ingrese su Contraseña" [type]="changetype?'password':'text'"   formControlName="password" type="password" id="contraseña" class="form-control form-control-lg" />
-            <span (click)="viewpass()"  class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' " ></i></span>
+            <span (click)="viewpass()"  class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' "></i></span>
             <label class="form-label password" for="contraseña">Contraseña</label>
           </div>
 
           <div class="alert alert-warning" role="alert"
-            *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['required']">
+            *ngIf="FormLogin.get('password')?.hasError('required')">
             Contraseña Requerido.
           </div>
 
           <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
           <div class="alert alert-info" role="alert"
-          *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['minlength']">
+          *ngIf="FormLogin.get('password')?.hasError('minlength')">
           Nesecitas 5 Caracteres como Mínimo.
           </div>
           <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
 
           <div class="alert alert-info" role="alert"
-          *ngIf="FormLogin.get('password')?.touched && FormLogin.get('password')?.errors?.['maxlength']">
+          *ngIf="FormLogin.get('password')?.hasError('maxlength')">
           10 Caracteres como Máximo.
-          </div>
-
-          <div class="alert alert-danger" role="alert" *ngIf="passwordvalid">
-            Contraseña Incorrecta
           </div>
           <!-- Botón de Ingresar  -->
           <button  type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>

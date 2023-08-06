@@ -29,12 +29,10 @@ constructor(private readonly router: Router,private readonly authService: AuthSe
   buildForm() {
     this.FormLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required,Validators.minLength(5), Validators.maxLength(10)],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
   }
 
-  emailvalid : boolean = false;
-  passwordvalid : boolean = false;
 
 
 
