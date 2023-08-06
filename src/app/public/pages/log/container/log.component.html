@@ -5,12 +5,11 @@
         <div style="width: 400px; height: 400px;">
           <ng-lottie [options]="animationOptions"></ng-lottie>
         </div>
-
       </div>
 
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <label for="admin" class="admin_text">Admin</label>
-        <form id="admin" [formGroup]="FormLogin">
+        <form id="admin" [formGroup]="FormLogin" (ngSubmit)="Login(FormLogin.value)">
 
           <!-- Correo Eletrónico input -->
           <div class="form-outline mb-4">
@@ -54,10 +53,11 @@
           </div>
 
           <!-- Botón de Ingresar  -->
-          <button (click)="Login()" type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>
+          <button  type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>
 
         </form>
       </div>
     </div>
   </div>
 </section>
+

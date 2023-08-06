@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AnimationOptions } from 'ngx-lottie';
-import { AuthService } from 'src/app/core/shared/services/auth.service';
-
+import { LoginI } from 'src/app/public/interfaces/LoginInterfaces';
+import { AuthService } from 'src/app/public/Services/auth.service';
 
 @Component({
   selector: 'app-container',
@@ -12,10 +12,7 @@ import { AuthService } from 'src/app/core/shared/services/auth.service';
 
 })
 export class LogComponent {
-constructor(private router: Router,private authService: AuthService) {
-
-
-  }
+constructor(private readonly router: Router,private readonly authService: AuthService,private formBuilder: FormBuilder,) {}
 
   visible:boolean = true;
   changetype:boolean = true;
@@ -23,32 +20,36 @@ constructor(private router: Router,private authService: AuthService) {
   animationOptions: AnimationOptions = {
     path: '/assets/animation/loginadmin3.json',
   };
+  FormLogin!: FormGroup;
+  ngOnInit() {
+    this.buildForm();
+  }
 
-  FormLogin = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(10)])
-  });
+  buildForm() {
+    this.FormLogin = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required,Validators.minLength(5), Validators.maxLength(10)],
+    });
+  }
+
   emailvalid : boolean = false;
   passwordvalid : boolean = false;
-  /* Simulo el Login para ver los datos correctos por consola y este lo envía al home o dashboard. */
-  Login() {
 
-    if (this.authService.EmailLogin(this.FormLogin.get('email')?.value) && this.authService.PasswordLogin(this.FormLogin.get('password')?.value) ) {
-      console.log(this.FormLogin.value);
-    this.router.navigate(['/home']);
-    window.location.href = '/home';
-    } else if(this.authService.EmailLogin(this.FormLogin.get('email')?.value) == false && this.authService.PasswordLogin(this.FormLogin.get('password')?.value) == true) {
-      console.log('Email es incorrecto');
-      this.emailvalid = true;
-      this.passwordvalid = false;
-    }else if(this.authService.EmailLogin(this.FormLogin.get('email')?.value) == true && this.authService.PasswordLogin(this.FormLogin.get('password')?.value) == false) {
-      console.log('La contraseña es incorrecta');
-      this.emailvalid = false;
-      this.passwordvalid = true;
-    }else{
-      console.log('Email y contraseñas son incorrectos');
-      this.emailvalid = true;
-      this.passwordvalid = true;
+
+
+
+  Login(form: LoginI) {
+    if (this.FormLogin.invalid) {
+      // Marcar los campos del formulario como tocados para mostrar los mensajes de error
+      Object.values(this.FormLogin.controls).forEach((control) =>
+        control.markAsTouched()
+      );
+      return;
+    } else {
+      this.authService.Login(form).subscribe((data) => {
+        this.authService.setToken(data.access_token);
+        this.router.navigate(['home']);
+      });
     }
 
   }
