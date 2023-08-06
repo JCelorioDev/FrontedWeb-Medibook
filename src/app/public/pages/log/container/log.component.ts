@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AnimationOptions } from 'ngx-lottie';
 import { LoginI } from 'src/app/public/interfaces/LoginInterfaces';
 import { AuthService } from 'src/app/public/Services/auth.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-container',
   templateUrl: './log.component.html',
@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/public/Services/auth.service';
 })
 export class LogComponent implements OnInit{
 constructor(private readonly router: Router,private readonly authService: AuthService,
-  private formBuilder: FormBuilder,) {}
+  private formBuilder: FormBuilder,private notificacion:ToastrService,) {}
 
   visible:boolean = true;
   changetype:boolean = true;
@@ -24,6 +24,8 @@ constructor(private readonly router: Router,private readonly authService: AuthSe
   FormLogin!: FormGroup;
   ngOnInit() {
     this.buildForm();
+
+
   }
 
   buildForm() {
@@ -41,12 +43,13 @@ constructor(private readonly router: Router,private readonly authService: AuthSe
     if (this.FormLogin.invalid) {
       // Marcar los campos del formulario como tocados para mostrar los mensajes de error
       Object.values(this.FormLogin.controls).forEach((control) =>
-        control.markAsTouched()
+        control.markAsTouched(),
       );
       return;
     } else {
       this.authService.Login(form).subscribe((data) => {
         this.authService.setToken(data.access_token);
+        this.notificacion.success("Inicio de sesión exitoso",'Proceso Exitoso');
         this.router.navigate(['home']);
       });
     }

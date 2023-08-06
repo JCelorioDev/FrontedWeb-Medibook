@@ -1,54 +1,56 @@
-<section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <div style="width: 400px; height: 400px;">
-          <ng-lottie [options]="animationOptions"></ng-lottie>
+ <div>
+  <section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <div style="width: 400px; height: 400px;">
+            <ng-lottie [options]="animationOptions"></ng-lottie>
+          </div>
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <label for="admin" class="admin_text">Admin</label>
+          <form id="admin" [formGroup]="FormLogin" (ngSubmit)="Login(FormLogin.value)">
+
+            <!-- Correo Eletrónico input -->
+             <div class="form-outline mb-4">
+              <label class="form-label" for="correo_electronico">Correo Electrónico</label>
+              <input placeholder="Ingrese su Correo Electrónico" formControlName="email" type="email"  class="form-control form-control-lg" />
+            <div
+            *ngIf="FormLogin.get('email')?.invalid && FormLogin.get('email')?.touched">
+            <span *ngIf="FormLogin.get('email')?.hasError('required')"
+             style="color: red;"> Correo Electrónico Requerido.</span>
+            </div>
+            <div  *ngIf="FormLogin.get('email')?.hasError('email')" style="color: red;">
+              Se requiere un correo valido.
+           </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="password">Contraseña</label>
+              <input placeholder="Ingrese su Contraseña" [type]="changetype?'password':'text'"
+              formControlName="password" type="password" class="form-control form-control-lg"  />
+              <span (click)="viewpass()"  class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' "></i></span>
+              <div  *ngIf="FormLogin.get('password')?.invalid && FormLogin.get('password')?.touched">
+                <span *ngIf="FormLogin.get('password')?.hasError('required')" style="color: red;"> Contraseña Requerido.</span>
+             </div>
+              <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
+            <div  *ngIf="FormLogin.get('password')?.hasError('minlength')" style="color: red;">
+            Nesecitas 5 Caracteres como Mínimo.
+            </div>
+            <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
+             <div
+            *ngIf="FormLogin.get('password')?.hasError('maxlength')" style="color: red;">
+            10 Caracteres como Máximo.
+            </div>
+            </div>
+
+            <!-- Botón de Ingresar  -->
+             <button  type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>
+          </form>
         </div>
       </div>
-
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <label for="admin" class="admin_text">Admin</label>
-        <form id="admin" [formGroup]="FormLogin" (ngSubmit)="Login(FormLogin.value)">
-
-          <!-- Correo Eletrónico input -->
-          <div class="form-outline mb-4">
-            <label class="form-label" for="correo_electronico">Correo Electrónico</label>
-            <input placeholder="Ingrese su Correo Electrónico" formControlName="email" type="email"  class="form-control form-control-lg" />
-          <div
-          *ngIf="FormLogin.get('email')?.invalid && FormLogin.get('email')?.touched">
-          <span *ngIf="FormLogin.get('email')?.hasError('required')"
-           style="color: red;"> Correo Electrónico Requerido.</span>
-          </div>
-          <div  *ngIf="FormLogin.get('email')?.hasError('email')" style="color: red;">
-            Se requiere un correo valido.
-         </div>
-          </div>
-
-          <div class="form-outline mb-4">
-            <label class="form-label" for="password">Contraseña</label>
-            <input placeholder="Ingrese su Contraseña" [type]="changetype?'password':'text'"
-            formControlName="password" type="password" class="form-control form-control-lg"  />
-            <span (click)="viewpass()"  class="eyeicon"><i [ngClass]="visible?'bi bi-eye-fill' : 'bi bi-eye-slash-fill' "></i></span>
-            <div  *ngIf="FormLogin.get('password')?.invalid && FormLogin.get('password')?.touched">
-              <span *ngIf="FormLogin.get('password')?.hasError('required')" style="color: red;"> Contraseña Requerido.</span>
-           </div>
-            <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
-          <div  *ngIf="FormLogin.get('password')?.hasError('minlength')" style="color: red;">
-          Nesecitas 5 Caracteres como Mínimo.
-          </div>
-          <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
-          <div
-          *ngIf="FormLogin.get('password')?.hasError('maxlength')" style="color: red;">
-          10 Caracteres como Máximo.
-          </div>
-          </div>
-
-          <!-- Botón de Ingresar  -->
-          <button  type="submit" class="btn btn-primary btn-lg btn-block">Ingresar</button>
-        </form>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+ </div>
 

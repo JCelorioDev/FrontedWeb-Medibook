@@ -4,9 +4,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LottieModule } from 'ngx-lottie';
-
+import { ToastrModule } from 'ngx-toastr';
 import player from 'lottie-web';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorInterceptor } from './core/shared/interceptor/auth-interceptor.interceptor';
+import { AuthService } from './public/Services/auth.service';
+import { PermissionGuard } from './core/shared/guard/permission/permission.guard';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+import { provideToastr } from 'ngx-toastr';
 export function playerFactory() {
   return player;
 }
@@ -18,10 +24,20 @@ export function playerFactory() {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+    }),
     LottieModule.forRoot({ player: playerFactory }),
-
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorInterceptor,
+    multi: true,
+  },
+  provideAnimations(), // required animations providers
+  provideToastr(), // Toastr providers
+  PermissionGuard,
+  AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

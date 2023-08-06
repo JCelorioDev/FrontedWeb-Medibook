@@ -8,6 +8,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { ToastrModule } from 'ngx-toastr';
+
 export function playerFactory() {
   return player;
 }
@@ -23,6 +25,7 @@ export function playerFactory() {
     PublicRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+
     LottieModule.forRoot({ player: playerFactory }),
   ]
 })
